@@ -17,10 +17,12 @@ public:
     void createList(unsigned N);
     void createList(string str);
     List *listItem(unsigned int index);
-    void addValueAtList();
-    void changeValueAtList();
-    void getValueAtList();
-    void deleteValueAtList();
+    void addValueAtList(int index, int value);
+    void changeValueAtList(int index1, int index2);
+    int getValueAtListByValue(int value);
+    int getValueAtListByIndex(int index);
+    void deleteValueAtListByValue(int value);
+    void deleteValueAtListByIndex(int index);
     void deleteList ();
 };
 

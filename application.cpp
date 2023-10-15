@@ -19,7 +19,5 @@ void Application::exec(){
 
     }else if(type == 2){
 
-    }else{
-        cout << "AAAAAAA";
     }
 }

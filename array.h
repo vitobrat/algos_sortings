@@ -13,12 +13,11 @@ public:
     void printArr();
     void createArr(unsigned N);
     void createArr(string str);
-    void addValueAtArr();
     void addValueAtArr(int index, int value);
-    void changeValueAtArray();
-    void getValueAtArrByIndex(int index);
-    void getValueAtArrByValue();
-    void deleteValueAtArr();
+    void changeValueAtArray(int index1, int index2);
+    int getValueAtArrByIndex(int index);
+    int getValueAtArrByValue(int value);
+    void deleteValueAtArr(int index);
     void deleteArr();
 };
 
