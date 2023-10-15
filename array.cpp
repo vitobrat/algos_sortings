@@ -9,7 +9,9 @@ Array::Array(){
 
 }
 
-
+int Array::getSize(){
+    return size;
+}
 
 void Array::printArr(){
     cout << "Array: ";
@@ -25,7 +27,7 @@ void Array::createArr(unsigned N){
     arr = new int[size];
     srand(time(NULL));
     for (int i = N - 1; i >= 0; i--){
-        arr[i] = rand() % 100;
+        arr[i] = rand() % 200 - 100;
     }
 }
 
