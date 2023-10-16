@@ -6,10 +6,11 @@ using namespace std;
 
 class Array
 {
+    int size = 0;
 public:
     Array();
     int *arr = nullptr;
-    int size = 0;
+    int getSize();
     void printArr();
     void createArr(unsigned N);
     void createArr(string str);

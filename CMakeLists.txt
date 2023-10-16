@@ -20,6 +20,8 @@ add_executable(sortings
   array.cpp
   list.h
   list.cpp
+  mergesort.h mergesort.cpp
+  timsort.h timsort.cpp
 )
 target_link_libraries(sortings Qt${QT_VERSION_MAJOR}::Core)
 
