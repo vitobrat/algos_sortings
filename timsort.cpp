@@ -15,6 +15,21 @@ int calcMinRun(int n) {
     return n + r; // Возвращаем минимальный "run".
 }
 
+// Дополнительная функция для бинарного поиска в режиме "галопа"
+int binarySearch(Array &arr, int start, int len, int target) {
+    int lo = start;
+    int hi = len;
+    while (lo < hi) {
+        int mid = (lo + hi) / 2;
+        if (arr.arr[mid] < target) {
+            lo = mid + 1;
+        } else {
+            hi = mid;
+        }
+    }
+    return lo - start;
+}
+
 void merge(Array &arr, int left, int mid, int right) {
     int len1 = mid - left;
     int len2 = right - mid;
@@ -34,12 +49,38 @@ void merge(Array &arr, int left, int mid, int right) {
     }
 
     int i = 0, j = 0, k = left;
+    int consecutiveCopiesL = 0, consecutiveCopiesR = 0; // Счетчик последовательных копирований
+    bool galloping = false;    // Флаг режима "галопа"
 
     while (i < len1 && j < len2) {
         if (leftArr->arr[i] <= rightArr->arr[j]) {
             arr.arr[k++] = leftArr->arr[i++];
+            consecutiveCopiesL++;
+            consecutiveCopiesR = 0;
+            if (consecutiveCopiesL >= 7 && !galloping) {
+                // Включаем режим "галопа" и используем бинарный поиск
+                int searchIdx = binarySearch(*leftArr, i, len1, rightArr->arr[j]);
+                int x = i;
+                for(; x < searchIdx; x++) {
+                    arr.arr[k++] = leftArr->arr[i++];
+                }
+                galloping = true;
+                consecutiveCopiesL=0;
+            }
         } else {
             arr.arr[k++] = rightArr->arr[j++];
+            consecutiveCopiesR++;
+            consecutiveCopiesL=0;
+            if (consecutiveCopiesR >= 7 && !galloping) {
+                // Включаем режим "галопа" и используем бинарный поиск
+                int searchIdx = binarySearch(*rightArr, j, len2, leftArr->arr[i]);
+                int x = j;
+                for(; x < searchIdx; x++) {
+                    arr.arr[k++] = rightArr->arr[j++];
+                }
+                galloping = true;
+                consecutiveCopiesR = 0;
+            }
         }
     }
 
