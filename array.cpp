@@ -9,11 +9,16 @@ Array::Array(){
 
 }
 
-int Array::getSize(){
+Array::~Array(){
+    delete []arr;
+    size = 0;
+}
+
+int Array::getSize() const{
     return size;
 }
 
-void Array::printArr(){
+void Array::printArr() const{
     cout << "Array: ";
     for(int *i = arr; i != arr + size; i++){
         cout << *i << " ";
@@ -27,7 +32,7 @@ void Array::createArr(unsigned N){
     arr = new int[size];
     srand(time(NULL));
     for (int i = N - 1; i >= 0; i--){
-        arr[i] = rand() % 200 - 100;
+        arr[i] = rand() % 10000 - 5000;
     }
 }
 
@@ -74,11 +79,11 @@ void Array::changeValueAtArray(int index1, int index2){
     swap(arr[index2 - 1], arr[index1 - 1]);
 }
 
-int Array::getValueAtArrByIndex(int index){
+int Array::getValueAtArrByIndex(int index) const{
     if (index >= 0 && index <= size) return arr[index];
 }
 
-int Array::getValueAtArrByValue(int value){
+int Array::getValueAtArrByValue(int value) const{
     int index, count = 0;
     for(int i = 0; i < size; i++){
         if(arr[i] == value){
@@ -102,6 +107,17 @@ void Array::deleteValueAtArr(int index){
     delete []arr;
     arr = arr1;
     size--;
+}
+
+int Array::operator[](int index) const{
+    return arr[index];
+}
+
+Array& Array::operator=(const Array &arr){
+    if (this != &arr) {  // Проверка на самоприсваивание
+        this->arr = arr.arr;
+    }
+    return *this;
 }
 
 void Array::deleteArr(){

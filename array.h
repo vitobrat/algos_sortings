@@ -9,16 +9,19 @@ class Array
     int size = 0;
 public:
     Array();
+    ~Array();
     int *arr = nullptr;
-    int getSize();
-    void printArr();
+    int getSize() const;
+    void printArr() const;
     void createArr(unsigned N);
     void createArr(string str);
     void addValueAtArr(int index, int value);
     void changeValueAtArray(int index1, int index2);
-    int getValueAtArrByIndex(int index);
-    int getValueAtArrByValue(int value);
+    int getValueAtArrByIndex(int index) const;
+    int getValueAtArrByValue(int value) const;
     void deleteValueAtArr(int index);
+    int operator[](int index) const;
+    Array& operator=(const Array &arr);
     void deleteArr();
 };
 

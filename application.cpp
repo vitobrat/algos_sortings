@@ -18,17 +18,20 @@ void Application::exec(){
     cin >> type;
     string str;
     Array *arr = new Array;
+    cout << "Length: ";
+    int length;
+    cin >> length;
     if (type == 1){
-
+        arr->createArr(length);
+        arr->printArr();
+        cout << "After Timsort sort - ";
+        TimSort::sort(*arr);
+        arr->printArr();
     }else if(type == 2){
-        MergeSort *mergeSort = new MergeSort;
-        cout << "Length: ";
-        int length;
-        cin >> length;
         arr->createArr(length);
         arr->printArr();
         cout << "After merge sort - ";
-        mergeSort->mergeSort(arr->arr, 0, arr->getSize() - 1);
+        MergeSort::mergeSort(arr->arr, 0, arr->getSize() - 1);
         arr->printArr();
     }
     delete arr;

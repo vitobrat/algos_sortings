@@ -6,7 +6,8 @@ MergeSort::MergeSort()
 
 }
 
-int* copy(int arr[], int left, int right){
+
+int*  copy(const int arr[], int left, int right){
     int *arrCopy = new int[right - left];
     for (int i = left; i < right; i++){
         arrCopy[i - left] = arr[i];
@@ -14,16 +15,7 @@ int* copy(int arr[], int left, int right){
     return arrCopy;
 }
 
-void MergeSort::mergeSort(int arr[], int left, int right){
-    if (left < right){
-        int medium = (left + right) / 2;
-        mergeSort(arr, left, medium);
-        mergeSort(arr, medium + 1, right);
-        merge(arr, left, medium, right);
-    }
-}
-
-void MergeSort::merge(int arr[], int left, int medium, int right){
+void merge(int arr[], int left, int medium, int right){
     int N1 = medium + 2 - left;
     int N2 = right + 1 - medium;
     int *arrLeft = copy(arr, left, medium + 1);
@@ -33,11 +25,18 @@ void MergeSort::merge(int arr[], int left, int medium, int right){
     int i = 0, j = 0, k = left;
     while(i < N1 - 1 || j < N2 - 1){
         if (arrLeft[i] < arrRight[j]){
-                arr[k++] = arrLeft[i++];
+            arr[k++] = arrLeft[i++];
         }else{
-                arr[k++] = arrRight[j++];
+            arr[k++] = arrRight[j++];
         }
     }
-    delete []arrLeft;
-    delete []arrRight;
+}
+
+void MergeSort::mergeSort(int arr[], int left, int right){
+    if (left < right){
+        int medium = (left + right) / 2;
+        mergeSort(arr, left, medium);
+        mergeSort(arr, medium + 1, right);
+        merge(arr, left, medium, right);
+    }
 }
