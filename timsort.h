@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <stack>
 #include "array.h"
-#include "mergesort.h"
+#include "quicksort.h"
 
 const int MIN_MERGE = 64;  // Минимальный размер "run", используемый в Timsort.
 

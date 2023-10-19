@@ -6,7 +6,7 @@ class Application
 {
 public:
     Application();
-    void exec();
+    static void exec();
 };
 
 #endif // APPLICATION_H

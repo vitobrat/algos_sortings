@@ -14,9 +14,9 @@ public:
     int getSize() const;
     void printArr() const;
     void createArr(unsigned N);
-    void createArr(string str);
+    void createArr(const string& str);
     void addValueAtArr(int index, int value);
-    void changeValueAtArray(int index1, int index2);
+    void changeValueAtArray(int index1, int index2) const;
     int getValueAtArrByIndex(int index) const;
     int getValueAtArrByValue(int value) const;
     void deleteValueAtArr(int index);

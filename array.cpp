@@ -36,7 +36,7 @@ void Array::createArr(unsigned N){
     }
 }
 
-void Array::createArr(string str){
+void Array::createArr(const string& str){
     deleteArr();
     istringstream iss(str);
     int num;
@@ -71,7 +71,7 @@ void Array::addValueAtArr(int index, int value){
 }
 
 
-void Array::changeValueAtArray(int index1, int index2){
+void Array::changeValueAtArray(int index1, int index2) const{
     if (!((index1 >= 1 && index1 <= size) && (index2 >= 1 && index2 <= size))){
         cout << "Wrong input! Try again.\n";
         return;
@@ -113,12 +113,6 @@ int Array::operator[](int index) const{
     return arr[index];
 }
 
-Array& Array::operator=(const Array &arr){
-    if (this != &arr) {  // Проверка на самоприсваивание
-        this->arr = arr.arr;
-    }
-    return *this;
-}
 
 void Array::deleteArr(){
     delete []arr;

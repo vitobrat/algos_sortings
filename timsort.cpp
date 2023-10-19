@@ -20,9 +20,9 @@ void merge(Array &arr, int left, int mid, int right) {
     int len2 = right - mid;
 
 
-    Array *leftArr = new Array;
+    auto *leftArr = new Array;
     leftArr->createArr(len1);
-    Array *rightArr = new Array;
+    auto *rightArr = new Array;
     rightArr->createArr(len2);
 
 

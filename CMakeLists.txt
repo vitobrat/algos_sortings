@@ -11,5 +11,5 @@ add_executable(sorting2
         array.cpp
         list.h
         list.cpp
-        mergesort.h mergesort.cpp
+        quicksort.h quicksort.cpp
         timsort.h timsort.cpp)
