@@ -93,7 +93,7 @@ void merge(Array &arr, int left, int mid, int right) {
     }
 }
 
-void insertionSort(Array &arr, int left, int right) {
+void insertionSort(Array &arr, int left, int right) {// Сортировка вставкой для небольших подмассивов.
     for (int i = left + 1; i < right; i++) {
         int key = arr[i];
         int j = i - 1;
@@ -101,7 +101,7 @@ void insertionSort(Array &arr, int left, int right) {
             arr.arr[j + 1] = arr[j];
             j--;
         }
-        arr.arr[j + 1] = key;  // Сортировка вставкой для небольших подмассивов.
+        arr.arr[j + 1] = key;
     }
 }
 
@@ -113,14 +113,14 @@ void TimSort::sort(Array &arr) {
     int minRun = calcMinRun(n); // Вычисляем минимальный размер "run" на основе размера массива.
 
     for (int i = 0; i < n; i += minRun) {
-        int end = std::min(i + minRun, n);
+        int end = min(i + minRun, n);
         insertionSort(arr, i, end);  // Сортировка вставкой небольших подмассивов (минимальных "run").
     }
 
     for (int size = minRun; size < n; size = 2 * size) {
         for (int left = 0; left < n; left += 2 * size) {
-            int mid = std::min(left + size, n);
-            int right = std::min(left + 2 * size, n);
+            int mid = min(left + size, n);
+            int right = min(left + 2 * size, n);
             if (mid != right)
                 merge(arr, left, mid, right);  // Объединение подмассивов с использованием Merge Sort.
         }
